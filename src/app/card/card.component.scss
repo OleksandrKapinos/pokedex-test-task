@@ -1,0 +1,230 @@
+@import '../../variables.scss';
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+
+  .card-container {
+    position: absolute;
+    width: 350px;
+    min-width: 300px;
+    max-width: 400px;
+    height: auto;
+    padding: 2vh 2vw;
+    font-family: roboto, sans-serif;
+    border-radius: 18px;
+    background-color: #fff;
+    box-shadow: 5px 5px 15px $box-dark-shadow;
+    text-align: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+    z-index: 10;
+    margin: 9% 5%;
+
+
+    .card-name {
+      margin: 0 auto;
+    }
+
+    .card-image {
+      width: 250px;
+      height: auto;
+    }
+
+
+    .card-types {
+      position: relative;
+      margin-bottom: 10px;
+
+      .types {
+        display: inline-block;
+        margin-right: 5px;
+        text-decoration: none;
+      }
+    }
+
+    .tile {
+      position: relative;
+      float: left;
+      clear: left;
+      margin: 0 auto 10px auto;
+      font-size: 16px;
+      font-weight: 400;
+      font-family: Raleway, verdana, sans-serif;
+      color: $white;
+      text-decoration: none;
+      background: $color-main;
+      padding: 10px 15px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      height: auto;
+      width: calc(100% - 30px);
+      &:hover{
+        transition: all 150ms linear;
+        opacity: .75;
+      }
+      &.normal{
+        background: #9E9E9E;
+      }
+      &.fighting{
+        background: #f44336;
+      }
+      &.flying{
+        background: #42a5f5;
+      }
+      &.poison{
+        background: #673AB7;
+      }
+      &.ground{
+        background: #4e342e;
+      }
+      &.rock{
+        background: #757575;
+      }
+      &.bug{
+        background: #43a047;
+      }
+      &.ghost{
+        background: #5e35b1;
+      }
+      &.steel{
+        background: #757575;
+      }
+      &.fire{
+        background: #FF5722;
+      }
+      &.water{
+        background: #03A9F4;
+      }
+      &.grass{
+        background: #689F38;
+      }
+      &.electric{
+        background: #FFEB3B;
+      }
+      &.psychic{
+        background: #ad1457;
+      }
+      &.ice{
+        background: #607D8B;
+      }
+      &.dragon{
+        background: #4527a0;
+      }
+      &.dark{
+        background: #424242;
+      }
+      &.fairy{
+        background: #ab47bc;
+      }
+      &.unknown{
+        background: #607d8b;
+      }
+      &.shadow{
+        background: #455a64;
+      }
+    }
+
+
+    progress {
+      position: relative;
+      float: left;
+      clear: left;
+      width: 100%;
+      height: 6px;
+      margin: 5px 0 0 0;
+      border-radius: 5px;
+      color: $white;
+      background: $box-shadow;
+      border: none;
+      outline: none;
+
+      &::-webkit-progress-bar {
+        background: $box-shadow;
+        border-radius: 5px;
+      }
+
+      &::-webkit-progress-value {
+        background: $white;
+        border-radius: 5px;
+        border: none;
+      }
+
+      &::-moz-progress-bar {
+        background: $white;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+
+    //close button
+    .closeButton {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -10px;
+
+      .circle {
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border: 4px solid $red;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        margin: 10px 20px;
+
+        &:after {
+          width: 24px;
+          height: 4px;
+          background-color: $red;
+          content: "";
+          left: 50%;
+          top: 50%;
+          margin-left: -12px;
+          margin-top: -2px;
+          position: absolute;
+          transform: rotate(-45deg);
+
+        }
+
+        &:before {
+          left: 50%;
+          top: 50%;
+          margin-left: -12px;
+          margin-top: -2px;
+          width: 24px;
+          height: 4px;
+          background-color: $red;
+          content: "";
+          position: absolute;
+          transform: rotate(45deg);
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1050px) {
+  .container {
+    text-align: center;
+
+    .background {
+      width: 100vw;
+      height: 100vh;
+      background: $color-smoke;
+      opacity: 0.8;
+    }
+
+    .card-container {
+      margin: 9% calc(-350px / 2);
+      display: inline-block;
+    }
+  }
+}
