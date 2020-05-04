@@ -7,9 +7,8 @@
 
   .card-container {
     position: absolute;
+    box-sizing: border-box;
     width: 350px;
-    min-width: 300px;
-    max-width: 400px;
     height: auto;
     padding: 2vh 2vw;
     font-family: roboto, sans-serif;
@@ -20,108 +19,127 @@
     transition: 0.5s ease;
     cursor: pointer;
     z-index: 10;
-    margin: 9% 5%;
-
+    margin: 0 calc((50vw - 350px) / 2);
 
     .card-name {
+      height: 4vh;
       margin: 0 auto;
     }
 
     .card-image {
-      width: 250px;
-      height: auto;
+      width: auto;
+      height:  30vh;
+      max-height: 300px;
     }
 
 
     .card-types {
       position: relative;
-      margin-bottom: 10px;
 
       .types {
         display: inline-block;
-        margin-right: 5px;
-        text-decoration: none;
+        margin-right: 10%;
       }
     }
 
     .tile {
       position: relative;
+      width: 90%;
       float: left;
       clear: left;
       margin: 0 auto 10px auto;
-      font-size: 16px;
+      padding: 0.75vh 15px;
       font-weight: 400;
       font-family: Raleway, verdana, sans-serif;
       color: $white;
       text-decoration: none;
       background: $color-main;
-      padding: 10px 15px;
       text-transform: uppercase;
       border-radius: 4px;
-      height: auto;
-      width: calc(100% - 30px);
-      &:hover{
+      font-size: 1.7vh;
+
+      &:hover {
         transition: all 150ms linear;
         opacity: .75;
       }
-      &.normal{
+
+      &.normal {
         background: #9E9E9E;
       }
-      &.fighting{
+
+      &.fighting {
         background: #f44336;
       }
-      &.flying{
+
+      &.flying {
         background: #42a5f5;
       }
-      &.poison{
+
+      &.poison {
         background: #673AB7;
       }
-      &.ground{
+
+      &.ground {
         background: #4e342e;
       }
-      &.rock{
+
+      &.rock {
         background: #757575;
       }
-      &.bug{
+
+      &.bug {
         background: #43a047;
       }
-      &.ghost{
+
+      &.ghost {
         background: #5e35b1;
       }
-      &.steel{
+
+      &.steel {
         background: #757575;
       }
-      &.fire{
+
+      &.fire {
         background: #FF5722;
       }
-      &.water{
+
+      &.water {
         background: #03A9F4;
       }
-      &.grass{
+
+      &.grass {
         background: #689F38;
       }
-      &.electric{
+
+      &.electric {
         background: #FFEB3B;
       }
-      &.psychic{
+
+      &.psychic {
         background: #ad1457;
       }
-      &.ice{
+
+      &.ice {
         background: #607D8B;
       }
-      &.dragon{
+
+      &.dragon {
         background: #4527a0;
       }
-      &.dark{
+
+      &.dark {
         background: #424242;
       }
-      &.fairy{
+
+      &.fairy {
         background: #ab47bc;
       }
-      &.unknown{
+
+      &.unknown {
         background: #607d8b;
       }
-      &.shadow{
+
+      &.shadow {
         background: #455a64;
       }
     }
@@ -213,18 +231,26 @@
 
 @media all and (max-width: 1050px) {
   .container {
-    text-align: center;
-
     .background {
       width: 100vw;
       height: 100vh;
-      background: $color-smoke;
-      opacity: 0.8;
+      background: $loader-overlay-color;
     }
-
+    .card-name {
+      font-size: 3.5vh;
+    }
     .card-container {
-      margin: 9% calc(-350px / 2);
+      max-width: 450px;
+      width: 90vw;
+      max-height: 90vh;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+      padding: 2vh 2vw;
       display: inline-block;
     }
   }
 }
+
+

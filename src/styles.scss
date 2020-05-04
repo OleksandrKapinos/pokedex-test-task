@@ -42,64 +42,12 @@ html, body {
   to {transform: rotate(360deg);}
 }
 
-
-.normal{
-  background: #9E9E9E;
-}
-.fighting{
-  background: #f44336;
-}
-.flying{
-  background: #42a5f5;
-}
-.poison{
-  background: #673AB7;
-}
-.ground{
-  background: #4e342e;
-}
-.rock{
-  background: #757575;
-}
-.bug{
-  background: #43a047;
-}
-.ghost{
-  background: #5e35b1;
-}
-.steel{
-  background: #757575;
-}
-.fire{
-  background: #FF5722;
-}
-.water{
-  background: #03A9F4;
-}
-.grass{
-  background: #689F38;
-}
-.electric{
-  background: #FFEB3B;
-}
-.psychic{
-  background: #ad1457;
-}
-.ice{
-  background: #607D8B;
-}
-.dragon{
-  background: #4527a0;
-}
-.dark{
-  background: #424242;
-}
-.fairy{
-  background: #ab47bc;
-}
-.unknown{
-  background: #607d8b;
-}
-.shadow{
-  background: #455a64;
+.errorHttp{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: wheat;
+  padding: 15vh 0;
+  text-align: center;
+  color: $red;
 }

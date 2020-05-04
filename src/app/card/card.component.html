@@ -1,34 +1,35 @@
-<div class="container">
-  <div *ngIf="isLoadingPokemon" class="loader-overlay">
-    <div class="loader"></div>
-  </div>
-  <div></div>
-
-  <div class="card-container">
-    <h1 class="card-name">
-      {{pokemonFullInfo.name}} #{{pokemonFullInfo.id}}
-    </h1>
-    <img class="card-image" src="{{pokemonFullInfo.image}}" alt="Pockemon`s image">
-
-    <div class="card-types">
-      <div class="types" *ngFor="let type of pokemonFullInfo.types">
-        <a href="#" class="tile {{type.type.name}}"
-        >{{type.type.name}}</a>
-      </div>
+<div class="container" *ngIf="!showError">
+    <div *ngIf="isLoading" class="loader-overlay">
+        <div class="loader"></div>
     </div>
-    <div *ngFor="let stat of pokemonFullInfo.stats">
-      <a href="#" class="tile">{{stat.stat.name}} - {{stat["base_stat"]}}
-        <progress value="{{stat['base_stat']}}" max="160"></progress>
-      </a>
-    </div>
-    <p class="tile types">Weight: {{pokemonFullInfo.weight}}</p>
 
-    <div class="closeButton">
-      <button class="circle" (click)="close()"></button>
+    <div class="card-container" *ngIf="pokemonInfo">
+        <h1 class="card-name">
+            {{pokemonInfo.name}} #{{pokemonInfo.id}}
+        </h1>
+        <img class="card-image" src="{{pokemonInfo.image}}" alt="Pockemon`s image">
+        <div class="card-types">
+            <div class="types" *ngFor="let type of pokemonInfo.types">
+                <a href="#" class="tile {{type.type.name}}"
+                >{{type.type.name}}</a>
+            </div>
+        </div>
+        <div *ngFor="let stat of pokemonInfo.stats">
+            <a href="#" class="tile">{{stat.stat.name}} - {{stat["base_stat"]}}
+                <progress value="{{stat['base_stat']}}" max="160"></progress>
+            </a>
+        </div>
+        <p class="tile types">Weight: {{pokemonInfo.weight}}</p>
+
+        <div class="closeButton">
+            <button class="circle" (click)="close()"></button>
+        </div>
     </div>
-  </div>
     <div class="background"></div>
 </div>
 
-
+<div class="errorHttp" *ngIf="showError">
+    <img src="../../assets/img/pikachu.png" alt="Pikachu">
+    <h4>{{errorMessage}}</h4>
+</div>
 

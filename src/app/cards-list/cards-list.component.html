@@ -1,33 +1,40 @@
-<h1 class="title">Pokedex</h1>
-<div class="first-box">
+<div class="container" *ngIf="!showError">
+    <h1 class="title">Pokedex</h1>
+    <div class="first-box">
 
-  <div *ngIf="isLoading" class="loader-overlay">
-    <div class="loader"></div>
-  </div>
-
-  <div class='card-container' *ngFor="let card of cardsList; let i = index">
-    <div class="card" (click)="openPokemon(i+1)">
-      <div class="card-image">
-        <img class="image" src="{{card.img}}" alt="Pokemons image">
-      </div>
-      <div class="card-text">
-        <div class="name">
-          <h2>{{card.name}}</h2>
+        <div *ngIf="isLoading" class="loader-overlay">
+            <div class="loader"></div>
         </div>
 
-      </div>
-    </div>
-  </div>
+        <div class='card-container' *ngFor="let card of cardsList; let i = index">
+            <div class="card" (click)="openPokemon(i+1)">
+                <div class="card-image">
+                    <img class="image" src="{{card.img}}" alt="Pokemons image">
+                </div>
+                <div class="card-text">
+                    <div class="name">
+                        <h2>{{card.name}}</h2>
+                    </div>
 
-  <div class="button-container">
-    <div (click)="addMore()" class='button'>Add more</div>
-  </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <div (click)="addMore()" class='button'>Add more</div>
+        </div>
+    </div>
+
+
+    <div class="second-box">
+        <div class="card-component">
+            <app-card [pokemonId]="pokemonId" (closeEvent)="onClose()" *ngIf="showCard"></app-card>
+        </div>
+    </div>
 </div>
 
-
-<div class="second-box">
-  <div class="card-component">
-    <app-card [pokemonId]="pokemonId" (closeEvent)="onClose()" *ngIf="showCard"></app-card>
-  </div>
+<div class="errorHttp" *ngIf="showError">
+    <img src="../../assets/img/pikachu.png" alt="Pikachu">
+    <h4>{{errorMessage}}</h4>
 </div>
 

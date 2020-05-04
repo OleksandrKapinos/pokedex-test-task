@@ -2,66 +2,74 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CardService} from '../_services/card.service';
 import {ImageService} from '../_services/image.service';
 
-export class PokemonFullInformation {
-  constructor(
-    public name: string,
-    public id: number,
-    public types: object[],
-    public stats: object[],
-    public weight: string,
-    public image?: string
-  ) {
-  }
-}
-
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+    selector: 'app-card',
+    templateUrl: './card.component.html',
+    styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
 
 
-  constructor(
-    private cardService: CardService,
-    private imageService: ImageService,
-  ) {
-  }
-
-  currentPokemonId: number;
-  @Output() closeEvent = new EventEmitter<boolean>();
-
-  @Input()
-  set pokemonId(pokemonId: number) {
-    if (pokemonId > 0 && pokemonId < 964) {
-      this.currentPokemonId = pokemonId;
-      this.ngOnInit();
+    constructor(
+        private cardService: CardService,
+        private imageService: ImageService,
+    ) {
     }
-  }
 
 
-  pokemonFullInfo = new PokemonFullInformation('', 0, [], [], '');
-  isLoadingPokemon: boolean;
+    @Output() closeEvent = new EventEmitter<boolean>();
 
-  ngOnInit() {
-    this.isLoadingPokemon = true;
-    this.cardService.getCard(this.currentPokemonId)
-      .subscribe(card => {
-        if (card) {
-          this.pokemonFullInfo = new PokemonFullInformation(
-            card.name[0].toUpperCase() + card.name.substring(1),
-            card.id,
-            card.types.reverse(),
-            card.stats.reverse(),
-            card.weight,
-            this.imageService.getImage(card.id)
-          );
+    @Input()
+    set pokemonId(pokemonId: number) {
+        if (pokemonId > 0 && pokemonId < 964) {
+            this.currentPokemonId = pokemonId;
+            this.ngOnInit();
         }
-        this.isLoadingPokemon = false;
-      });
-  }
+    }
 
-  close() {
-    this.closeEvent.emit();
-  }
+
+    errorMessage: string;
+    showError = false;
+    currentPokemonId: number;
+    isLoading: boolean;
+    pokemonInfo = {
+        id: 1,
+        name: '',
+        types: [],
+        stats: [],
+        weight: '',
+        image: ''
+    };
+
+    ngOnInit() {
+        this.isLoading = true;
+        this.cardService.getCard(this.currentPokemonId)
+            .subscribe(card => {
+                    if (card) {
+                        const {name, id, types, stats, weight, ...rest} = card;
+                        stats.reverse();
+                        const pokemonName = name[0].toUpperCase() + name.slice(1);
+                        const img = this.imageService.getImage(id);
+                        this.pokemonInfo = {
+                            id,
+                            name: pokemonName,
+                            types,
+                            stats,
+                            weight,
+                            image: img
+                        };
+                    }
+                    this.isLoading = false;
+                },
+                error => {
+                    this.errorMessage = error;
+                    this.showError = true;
+                    this.isLoading = false;
+                    throw error;
+                });
+    }
+
+    close() {
+        this.closeEvent.emit();
+    }
 }

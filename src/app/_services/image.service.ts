@@ -10,12 +10,8 @@ export class ImageService {
   }
 
   getImage(id: number) {
-    if (id < 10){
-      return `${environment.images}/00${id}.png`;
-    }else if (id < 100) {
-      return `${environment.images}/0${id}.png`;
-    }else{
-      return `${environment.images}/${id}.png`;
-    }
+    return  (id < 10) ?  `${environment.images}/00${id}.png` :
+            (id < 100) ? `${environment.images}/0${id}.png` :
+                         `${environment.images}/${id}.png`;
   }
 }

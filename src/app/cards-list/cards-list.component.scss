@@ -1,131 +1,144 @@
 @import '../../variables.scss';
 
+.container{
 
-  .title{
-    text-align: center;
-    color: $color-main;
-    width: 40vw;
-    margin: 3vh auto;
-    font-size: 3vw;
-    font-weight: 800;
-    padding: 2vh 5vw;
-    border: 2px solid;
-  }
-  .title:hover{
+}
+.title {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: $color-main;
+  width: 40vw;
+  height: 6vh;
+  margin: 4.5vh auto;
+  font-size: 3vw;
+  font-weight: 800;
+  border: 2px solid;
+  &:hover {
     background: $color-main;
     color: white;
   }
+}
 
-.first-box{
+
+
+.first-box {
+  position: absolute;
+  top: 15vh;
   text-align: center;
   width: 50vw;
-}
-.card-container{
-  display: inline-block;
 
-  .card {
-    display:grid;
-    grid-template-rows: auto 0 80px;
-    grid-template-areas: "image" "text" "stats";
-    min-width: 200px;
-    border-radius: 18px;
-    background-color: #fff;
-    box-shadow: 5px 5px 15px $box-dark-shadow;
-    text-align: center;
-    transition: 0.5s ease;
-    cursor: pointer;
-    margin: 5px;
+  .card-container {
+    display: inline-block;
 
-    .card-image {
-      grid-area: image;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      background-size: cover;
-      margin: 5px auto;
-      .image {
-        width: calc((50vw / 3) - 20px);
-        min-width: 200px;
-        height: auto;
-        min-height: 200px;
-        display: flex;
-      }
-    }
-
-    .card-text {
-      grid-area: stats;
+    .card {
       display: grid;
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      background-color: $color-main;
+      grid-template-rows: 200px 0 80px;
+      grid-template-areas: "image" "text" "stats";
+      width: 200px;
+      border-radius: 18px;
+      background-color: $white;
+      box-shadow: 5px 5px 15px $box-dark-shadow;
+      text-align: center;
+      transition: 0.5s ease;
+      cursor: pointer;
+      margin: 0 5px 5px 5px;
 
-      .name {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        //min-width: 200px;
-        color: #fff;
+      .card-image {
+        grid-area: image;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background-size: cover;
+        margin: 5px auto;
+
+        .image {
+          width: 200px;
+          height: auto;
+          display: flex;
+        }
+      }
+
+      .card-text {
+        grid-area: stats;
+        display: grid;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        background-color: $color-main;
+
+        .name {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          color: $white;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 5px 5px 15px $box-middle-shadow;
       }
     }
-
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 5px 5px 15px $box-middle-shadow;
-    }
   }
-}
-
-
-// button Add more
-.button-container {
-  margin: 60px auto;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  .button {
-    display: flex;
-    overflow: hidden;
-    margin: 10px;
-    padding: 12px 12px;
-    cursor: pointer;
-    user-select: none;
-    transition: all 150ms linear;
-    text-align: center;
-    white-space: nowrap;
-    color: $white;
-    border: 0 none;
-    border-radius: $borderRadius;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.3;
-    -webkit-appearance: none;
-    -moz-appearance:    none;
-    appearance:         none;
+  // button Add more
+  .button-container {
+    margin: 60px auto;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    flex: 0 0 160px;
-    box-shadow: 2px 5px 10px $color-smoke;
-    background: $color-main;
 
-    &:hover {
+    .button {
+      display: flex;
+      overflow: hidden;
+      margin: 10px;
+      padding: 12px 12px;
+      cursor: pointer;
+      user-select: none;
       transition: all 150ms linear;
-      opacity: .85;
+      text-align: center;
+      white-space: nowrap;
+      color: $white;
+      border: 0 none;
+      border-radius: $borderRadius;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.3;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      justify-content: center;
+      align-items: center;
+      flex: 0 0 160px;
+      box-shadow: 2px 5px 10px $color-smoke;
+      background: $color-main;
+
+      &:hover {
+        transition: all 150ms linear;
+        opacity: .85;
+      }
     }
   }
 }
 
 
-  .second-box{
-    position: absolute;
-    left: 50vw;
-    top: 0;
-  }
+.second-box {
+  position: absolute;
+  left: 50vw;
+  top: 15vh;
+}
+
 
 @media all and (max-width: 1050px) {
-  .first-box{
+  .title{
+    width: 80vw;
+    font-size: 5vw;
+  }
+  .first-box {
     width: 100vw;
   }
-  .second-box{
+  .second-box {
+    top: 0;
     left: 0;
   }
 }
